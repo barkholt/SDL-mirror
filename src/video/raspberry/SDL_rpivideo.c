@@ -245,6 +245,8 @@ RPI_CreateWindow(_THIS, SDL_Window * window)
     if (alpha_opacity_hint_value != NULL)
         alpha_opacity = atoi(alpha_opacity_hint_value);
 
+    printf("%s:%s:%i, %s:%s:%i\n", SDL_HINT_RPI_ALPHA_FLAGS, alpha_flags_hint_value, alpha_flags, SDL_HINT_RPI_ALPHA_OPACITY, alpha_opacity_hint_value, alpha_opacity);
+
     dispman_alpha.flags = alpha_flags;
     dispman_alpha.opacity = alpha_opacity;
     dispman_alpha.mask = 0;
