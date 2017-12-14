@@ -233,7 +233,7 @@ RPI_CreateWindow(_THIS, SDL_Window * window)
 
     /* Setup the default values, where we disable alpha, otherwise the app looks composed with whatever dispman is showing (X11, console,etc) */
     alpha_flags = DISPMANX_FLAGS_ALPHA_FIXED_ALL_PIXELS;
-    alpha_opacity_ = 0xFF;
+    alpha_opacity = 0xFF;
 
     /* If there are user supplied custom values for the alpha values, use them instead. */
     alpha_flags_hint_value = SDL_GetHint(SDL_HINT_RPI_ALPHA_FLAGS);
@@ -242,7 +242,7 @@ RPI_CreateWindow(_THIS, SDL_Window * window)
     if (alpha_flags_hint_value != NULL)
         alpha_flags = atoi(alpha_flags_hint_value);
 
-    if (alpha_opacity_hint_value =! NULL)
+    if (alpha_opacity_hint_value != NULL)
         alpha_opacity = atoi(alpha_opacity_hint_value);
 
     dispman_alpha.flags = alpha_flags;
