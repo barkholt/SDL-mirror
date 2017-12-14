@@ -277,6 +277,11 @@ RPI_CreateWindow(_THIS, SDL_Window * window)
     src_rect.width = window->w << 16;
     src_rect.height = window->h << 16;
 
+    _this->gl_config.alpha_size = 8;
+    _this->gl_config.red_size = 8;
+    _this->gl_config.green_size = 8;
+    _this->gl_config.blue_size = 8;
+
     env = SDL_GetHint(SDL_HINT_RPI_VIDEO_LAYER);
     if (env) {
         layer = SDL_atoi(env);
