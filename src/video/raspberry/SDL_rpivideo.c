@@ -226,10 +226,27 @@ RPI_CreateWindow(_THIS, SDL_Window * window)
     DISPMANX_UPDATE_HANDLE_T dispman_update;
     uint32_t layer = SDL_RPI_VIDEOLAYER;
     const char *env;
+    const char *alpha_flags_hint_value;
+    const char *alpha_opacity_hint_value;
+    DISPMANX_FLAGS_ALPHA_T alpha_flags;
+    uint32_t alpha_opacity;
 
-    /* Disable alpha, otherwise the app looks composed with whatever dispman is showing (X11, console,etc) */
-    dispman_alpha.flags = DISPMANX_FLAGS_ALPHA_FIXED_ALL_PIXELS; 
-    dispman_alpha.opacity = 0xFF; 
+    /* Setup the default values, where we disable alpha, otherwise the app looks composed with whatever dispman is showing (X11, console,etc) */
+    alpha_flags = DISPMANX_FLAGS_ALPHA_FIXED_ALL_PIXELS;
+    alpha_opacity_ = 0xFF;
+
+    /* If there are user supplied custom values for the alpha values, use them instead. */
+    alpha_flags_hint_value = SDL_GetHint(SDL_HINT_RPI_ALPHA_FLAGS);
+    alpha_opacity_hint_value = SDL_GetHint(SDL_HINT_RPI_ALPHA_OPACITY);
+
+    if (alpha_flags_hint_value != NULL)
+        alpha_flags = atoi(alpha_flags_hint_value);
+
+    if (alpha_opacity_hint_value =! NULL)
+        alpha_opacity = atoi(alpha_opacity_hint_value);
+
+    dispman_alpha.flags = alpha_flags;
+    dispman_alpha.opacity = alpha_opacity;
     dispman_alpha.mask = 0;
 
     /* Allocate window internal data */

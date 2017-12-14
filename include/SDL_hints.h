@@ -797,6 +797,20 @@ extern "C" {
  */
 #define SDL_HINT_RPI_VIDEO_LAYER           "SDL_RPI_VIDEO_LAYER"
 
+
+/**
+ * \brief Tell SDL which alpha blending mode to assign to the Dispmanx layer to use on a Raspberry PI
+ *
+ */
+#define SDL_HINT_RPI_ALPHA_FLAGS "SDL_RPI_ALPHA_FLAGS"
+
+/**
+ * \brief Tell SDL which opacity to assign to the Dispmanx layer to use on a Raspberry PI
+ *
+ */
+#define SDL_HINT_RPI_ALPHA_OPACITY "SDL_RPI_ALPHA_OPACITY"
+
+
 /**
  *  \brief  A variable controlling what driver to use for OpenGL ES contexts.
  *
